@@ -1,0 +1,328 @@
+/*---Logo/Header---*/
+.werewolfApp {
+  background-color: grey;
+}
+.werewolfLogo {
+  width: 100%;
+  margin-top: -110px;
+}
+.appHeaderContainer {
+  background-color: grey;
+  display: inline-block;
+  height: 350px;
+  overflow: hidden;
+  width: 70%; /*keep same as werewolf logo width to maintain centering */
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+/*---Lobby--*/
+#frontPage {
+}
+#frontPage div {
+  margin: 0 auto;
+}
+#lobby {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "lobby lobby lobby"
+    ". login ."
+    ". players ."
+    ". playButton .";
+  background-color: grey;
+}
+
+#lobby .login {
+  grid-area: login;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 51vw;
+  margin-bottom: 10px;
+}
+
+#header {
+  height: 250vh;
+  width: 100%;
+}
+#players {
+  grid-area: players;
+  width: 50vw;
+  justify-self: center;
+  align-content: center;
+  background-color: rgb(205, 201, 201);
+  border: solid 7px black;
+  transition: all 0.5s ease;
+  letter-spacing: 1px;
+  outline: none;
+  box-shadow: 20px 38px 34px;
+}
+
+#playerHeader {
+  font-family: Georgia;
+  align-items: center;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-size: 5vw;
+  margin-top: 2px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 0px;
+}
+
+#indivPlayer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px black;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+#lobby-chat {
+  grid-area: lobby-chat;
+  border: solid 5px black;
+}
+
+#msg-input {
+  display: inline-block;
+  position: relative;
+  margin-top: 20%;
+}
+
+#send-msg {
+  display: inline-block;
+  position: relative;
+  margin-left: 50%;
+  margin-bottom: 90%;
+}
+
+.playButton {
+  grid-area: playButton;
+  text-decoration: none;
+  font-family: Georgia;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-size: 5vw;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgb(75, 3, 3);
+  padding: 15px 40px;
+  border-radius: 4px;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+  width: 50vw;
+  margin-top: 5vw;
+  margin-bottom: 2vw;
+  justify-self: center;
+}
+
+.playButton:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(96, 12, 12, 0.4);
+}
+
+input[type="text"] {
+  text-decoration: none;
+  font-family: Georgia;
+  letter-spacing: 0.2em;
+  font-weight: 150;
+  /* font-size: 5vw; */
+  color: rgb(75, 3, 3);
+  padding: 5px;
+  border-radius: 4px;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+  width: 75%;
+  /* margin: 2vw; */
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #333;
+  outline: none;
+}
+
+input[type="submit"] {
+  text-decoration: none;
+  font-family: Georgia;
+  letter-spacing: 0.2em;
+  font-weight: 150;
+  /* font-size: 5vw; */
+  color: rgba(255, 255, 255, 0.8);
+  background: rgb(75, 3, 3);
+  padding: 5px;
+  border-radius: 4px;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+  width: 23%;
+  /* margin: 2vw; */
+}
+
+input[type="submit"]:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(96, 12, 12, 0.4);
+}
+
+/*---------------- GameView ---------------------*/
+
+#gameView {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "villageImage villageImage villageImage villageImage"
+    "roleContainer remaining gameMessage gameMessage"
+    "werewolfChat .  aliveDeadList voting";
+  background-color: grey;
+}
+
+#villageImage {
+  grid-area: villageImage;
+  align-content: center;
+  display-content: center;
+  height: 600px;
+  width: 100vw;
+  border: 3px solid black;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#gameMessage {
+  grid-area: gameMessage;
+  height: 250px;
+  width: 50%;
+  border: 3px solid black;
+}
+
+#role-container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  align-items: flex-start;
+  align-content: space-around;
+}
+
+#role {
+  margin-right: 20px;
+  font-family: Georgia;
+}
+
+#timer {
+  font-family: Georgia;
+  font-size: 25px;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.werewolfChat {
+  grid-area: werewolfChat;
+  display: grid;
+  overflow-y: scroll;
+  max-height: 250px;
+}
+
+#werewolfChatHeading {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+#seerContainer {
+}
+
+#aliveDeadList {
+  grid-area: aliveDeadList;
+  display: grid;
+  max-height: 256px;
+  overflow-y: auto;
+}
+
+#aliveDeadTitle {
+  justify-self: center;
+}
+
+#remaining {
+  grid-area: remaining;
+}
+
+#voting {
+  display: grid;
+  overflow-y: scroll;
+  grid-area: voting;
+  height: 250px;
+  width: 50%;
+  border: 3px solid black;
+}
+
+#wolfVotingButton {
+  color: black;
+  background-color: white;
+  padding: 10px 20px;
+  text-align: center;
+  border: 2px solid rgb(0, 153, 255);
+}
+
+#wolfVotingButton:hover {
+  color: white;
+  background-color: rgb(0, 153, 255);
+  padding: 10px 20px;
+  text-align: center;
+  border: 2px solid rgb(0, 153, 255);
+}
+
+#villagerVotingButton {
+  color: black;
+  background-color: white;
+  padding: 10px 20px;
+  text-align: center;
+  border: 2px solid rgb(75, 3, 3);
+}
+
+#villagerVotingButton:hover {
+  color: white;
+  background-color: rgb(75, 3, 3);
+  padding: 10px 20px;
+  text-align: center;
+  border: 2px solid rgb(75, 3, 3);
+}
+
+#votingButton #bacground {
+}
+
+#turn-info {
+}
+
+#role-container {
+}
+
+#remaining-wolves {
+}
+
+#game-chat {
+}
+
+#Selection {
+}
+
+#lobby ul {
+  list-style-type: square;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.fas {
+  animation: rotation 2s linear infinite;
+  display: inline-block;
+  color: rgb(75, 3, 3);
+}
+
+@keyframes rotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/*-----------------------------------------*/

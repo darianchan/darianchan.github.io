@@ -1,48 +1,43 @@
-import React, { useState } from 'react'
-import GameView from './GameView.jsx';
+import React, { useState } from "react";
+import GameView from "./GameView.jsx";
+import AppHeader from "./AppHeader.jsx";
+import Login from "./Login.jsx"
 
-
-const Lobby = ({ participants, handleGameStart }) => {
-
-  const [message, setMessage] = useState('');
-
+const Lobby = ({ participants, handleGameStart, handleLogin, handleSignup, loggedIn }) => {
+  const [message, setMessage] = useState("");
   return (
     <>
-      <div>
-        <div style={{ height: '250px', width: '50%', border: '3px solid black' }}>
-          <span>Username and stats</span>
-        </div>
-        <div style={{ height: '150px', width: '100px', border: '3px solid black' }}>
-          {participants.map((player) => {
-            return (
-              <div key={player}>{player}</div>
-            )
-          })}
-        </div>
-        <div>
-          <div style={{ height: '100px', width: '50%', border: '3px solid black' }}>
-            <textarea
-              name='chat'
-              type='text'
-              value={message}
-              onChange={e => setMessage(e.target.value)}
-            >Message</textarea>
+      <div id='frontPage'>
+        <AppHeader id="header" />
+        <div id="lobby">
+           <Login loggedIn={loggedIn} handleLogin={handleLogin} handleSignup={handleSignup}/>
+          <div id="players">
+            <h4 id="playerHeader">Players</h4>
+            <ul>
+            {participants.map((player) => {
+              return (
+                <li id="indivPlayer" key={player.id}>
+                  {player.name}
+
+                </li>
+              );
+            })}
+            </ul>
           </div>
-          <button
-            type='submit'
-            value='Submit'
-            onClick={() => console.log('Posted message')}
-          >Post Message</button>
+          {(participants.length >= 7 && loggedIn) && (
+            <button
+              className="playButton"
+              type="submit"
+              value="Submit"
+              onClick={() => handleGameStart()}
+            >
+              Play
+            </button>
+          )}
         </div>
       </div>
-      <button
-        type='submit'
-        value='Submit'
-        onClick={() => handleGameStart()}
-      >PLAY</button>
     </>
-  )
-}
-
+  );
+};
 
 export default Lobby;
